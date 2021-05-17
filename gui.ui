@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>724</width>
-    <height>611</height>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -123,7 +123,7 @@
       <x>140</x>
       <y>10</y>
       <width>571</width>
-      <height>541</height>
+      <height>601</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -132,28 +132,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTableView" name="table">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>551</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="verticalScrollMode">
-      <enum>QAbstractItemView::ScrollPerItem</enum>
-     </property>
-     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-      <bool>false</bool>
-     </attribute>
-    </widget>
     <widget class="QLabel" name="info_label">
      <property name="geometry">
       <rect>
@@ -167,13 +145,101 @@
       <string>info:</string>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="grafic">
+    <widget class="QComboBox" name="table_select">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>161</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Tables...</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="table_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>180</y>
+       <y>40</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Table:</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="table">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
        <width>551</width>
-       <height>351</height>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="GraficWidget" name="grafic" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>260</y>
+       <width>551</width>
+       <height>271</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="select_column_1">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>540</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="select_column_label_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>540</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select first column:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="select_column_label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>570</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select second column:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="select_column_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>570</y>
+       <width>131</width>
+       <height>22</height>
       </rect>
      </property>
     </widget>
@@ -191,6 +257,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GraficWidget</class>
+   <extends>QWidget</extends>
+   <header>graficwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
