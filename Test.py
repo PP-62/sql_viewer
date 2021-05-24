@@ -15,8 +15,11 @@ class mywindow(QMainWindow, Ui_MainWindow):
         # self.ui = Ui_MainWindow()
         self.setupUi(self)
 
-        self.Connect_button.pressed.connect(self.create_connect)
+        self.connect_button.pressed.connect(self.create_connect)
         self.table_select.activated[str].connect(self.select_table)
+        self.execute_button.pressed.connect(self.execute)
+        
+
 
         self.wrong_connect.setText("")
 
@@ -58,9 +61,14 @@ class mywindow(QMainWindow, Ui_MainWindow):
                 for j in range(len(table[0])):
                     self.table.setItem(i,j, QTableWidgetItem(table[i][j]))
             pass
- 
+
+    def execute(self):
+        if self.connection:
+            data = self.connection.execute(self.select_edit.text())
+            if data:
+                self.connection.save(data)
+        pass
 app = QApplication([])
 application = mywindow()
 application.show()
- 
 sys.exit(app.exec())

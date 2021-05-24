@@ -38,6 +38,7 @@ class Connect:
         self.db = db
         self.con = pymysql.connect(host=self.host, user=self.user, 
         password=self.password, db=self.db)
+        self.prohibited = ["DROP"]
 
     def get_table_names(self):
         self.con = pymysql.connect(host=self.host, user=self.user, 
@@ -99,9 +100,28 @@ class Connect:
         # self.con.close()
         return content
 
-a = Connect(host='localhost', user='root', password='test_db_password_123', db='world')
-x = a.get_table_names()
-for i in x:
-    print(i[0])
-print(a.get_columns("country"))
-print(a.get_content("country","name"))
+    def execute(self,command):
+        self.con = pymysql.connect(host=self.host, user=self.user, 
+        password=self.password, db=self.db)
+
+        words = command.split(" ")
+        for i in words:
+            if i.upper() in self.prohibited:
+                return False
+        with self.con:
+            cur = self.con.cursor()
+            cur.execute(command)
+            content = list(cur.fetchall()).copy()
+        # self.con.close()
+        return content
+
+    def save(self, table):
+        self.con = pymysql.connect(host=self.host, user=self.user, 
+        password=self.password, db=self.db)
+
+# a = Connect(host='localhost', user='root', password='test_db_password_123', db='world')
+# x = a.get_table_names()
+# for i in x:
+#     print(i[0])
+# print(a.get_columns("country"))
+# print(a.get_content("country","name"))
